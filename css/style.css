@@ -83,6 +83,7 @@ header {
 .boxes img {
   width: 100%;
   object-fit: cover;
+  height: 300px;
 }
 
 .boxes h4 {
@@ -96,4 +97,26 @@ header {
   justify-content: space-between;
   margin-top: 50px;
   row-gap: 30px;
+}
+
+.btn_inline {
+  display: flex;
+  gap: 10px;
+}
+
+.btn_inline button {
+  width: 50%;
+  padding: 10px 0;
+  cursor: pointer;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+}
+
+.btn_inline button:nth-child(1) {
+  background-color: rgb(218, 108, 108);
+}
+
+.btn_inline button:nth-child(2) {
+  background-color: rgb(84, 89, 216);
 }

@@ -101,15 +101,57 @@ addTodo.addEventListener("click", (event) => {
 })
 
 function card(base) {
-  const template = base.map(({title, discription, image}) => {
+  const template = base.map(({title, discription, image, id}) => {
     return`
     <div class="boxes">
     <h4>${title}</h4>
     <img src=${image} alt="">
     <p>${discription}</p>
+
+    <div class="btn_inline">
+    <button onclick="deleteTodo(${id})">
+      Delete
+    </button>
+    <button onclick="editTodo(${id})">
+      Edit
+    </button>
+  </div>
+
   </div>
     `
   }).join("")
 
   row.innerHTML = template
 }
+
+
+function deleteTodo(id) {
+  const todo = JSON.parse(localStorage.getItem("todo"))
+
+  const filtered = todo.filter(item => item.id !== id)
+
+  localStorage.setItem('todo', JSON.stringify(filtered))
+
+  window.location.reload()
+}
+
+
+function editTodo(id) {
+  const todo = JSON.parse(localStorage.getItem("todo"))
+
+  const changes = todo.map(item => {
+    if(item.id === id) {
+      return {
+        title: prompt("Title", item.title),
+        discription: prompt("Description". item.discription),
+        image: prompt("Image", item.image)
+      }
+    } else {
+      return item
+    }
+  })
+
+  localStorage.setItem("todo", JSON.stringify(changes))
+  window.location.reload()
+}
+
