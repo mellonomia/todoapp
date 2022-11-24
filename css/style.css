@@ -95,4 +95,5 @@ header {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 50px;
+  row-gap: 30px;
 }
